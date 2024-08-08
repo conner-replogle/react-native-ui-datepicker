@@ -189,6 +189,8 @@ export default function App() {
               locale={locale}
               startDate={range.startDate}
               endDate={range.endDate}
+              highlightedDays={[dayjs(date).add(7,'day'),dayjs(date).add(3,'day')]}
+
               dates={dates}
               //minDate={dayjs().startOf('day')}
               //maxDate={dayjs().add(3, 'day').endOf('day')}

@@ -10,6 +10,7 @@ export const daySize = 46;
 interface Props extends Omit<IDayObject, 'day'> {
   isToday: boolean;
   isSelected: boolean;
+  isHighlighted: boolean;
   onSelectDate: (date: string) => void;
   theme: CalendarThemeProps;
   height?: number;
@@ -29,6 +30,7 @@ function Day({
   isCurrentMonth,
   isToday,
   isSelected,
+  isHighlighted,
   inRange,
   leftCrop,
   rightCrop,
@@ -48,12 +50,20 @@ function Day({
     todayContainerStyle,
     todayTextStyle,
     selectedRangeBackgroundColor,
+    highlightedContainerStyle,
   } = theme;
 
   //const bothWays = inRange && leftCrop && rightCrop;
   const isCrop = inRange && (leftCrop || rightCrop) && !(leftCrop && rightCrop);
 
   const containerStyle = isCurrentMonth ? dayContainerStyle : { opacity: 0.3 };
+
+  const highlightItemStyle = isHighlighted
+    ? {
+        backgroundColor: '#F0F0F0',
+        ...highlightedContainerStyle,
+      }
+    : null;
 
   const todayItemStyle = isToday
     ? {
@@ -122,6 +132,7 @@ function Day({
         onPress={disabled ? undefined : onPress}
         style={[
           style.dayContainer,
+          highlightItemStyle,
           containerStyle,
           todayItemStyle,
           activeItemStyle,

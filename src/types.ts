@@ -43,6 +43,8 @@ export type CalendarThemeProps = {
   selectedTextStyle?: TextStyle;
   selectedItemColor?: string;
   timePickerContainerStyle?: ViewStyle;
+
+  highlightedContainerStyle?: ViewStyle;
   timePickerTextStyle?: TextStyle;
   timePickerIndicatorStyle?: ViewStyle;
   timePickerDecelerationRate?: 'normal' | 'fast' | number;
@@ -88,6 +90,7 @@ export interface DatePickerBaseProps {
   maxDate?: DateType;
   firstDayOfWeek?: number;
   displayFullDays?: boolean;
+  highlightedDays?: DateType[];
   timePicker?: boolean;
   date?: DateType;
   dates?: DateType[];

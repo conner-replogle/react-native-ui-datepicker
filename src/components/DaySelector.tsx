@@ -24,6 +24,7 @@ const DaySelector = () => {
     currentDate,
     onSelectDate,
     displayFullDays,
+    highlightedDays,
     minDate,
     maxDate,
     firstDayOfWeek,
@@ -60,6 +61,12 @@ const DaySelector = () => {
           const isToday = areDatesOnSameDay(day.date, today);
           let inRange = false;
           let isSelected = false;
+          console.log(highlightedDays);
+          const isHighlighted = highlightedDays
+            ? highlightedDays.findIndex((d) =>
+                areDatesOnSameDay(d, day.date)
+              ) !== -1
+            : false;
 
           if (mode === 'range') {
             rightCrop = false;
@@ -138,6 +145,7 @@ const DaySelector = () => {
             ...day,
             isToday,
             isSelected,
+            isHighlighted,
             inRange,
             leftCrop,
             rightCrop,
@@ -154,6 +162,7 @@ const DaySelector = () => {
       year,
       displayFullDays,
       firstDayOfWeek,
+      highlightedDays,
       minDate,
       maxDate,
       date,
@@ -196,6 +205,7 @@ const DaySelector = () => {
               theme={theme}
               isToday={day.isToday}
               isSelected={day.isSelected}
+              isHighlighted={day.isHighlighted}
               inRange={day.inRange}
               leftCrop={day.leftCrop}
               rightCrop={day.rightCrop}

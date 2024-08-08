@@ -69,6 +69,7 @@ const DateTimePicker = (
     firstDayOfWeek,
     buttonPrevIcon,
     buttonNextIcon,
+    highlightedDays,
     // startYear,
     // endYear,
     minDate,
@@ -292,6 +293,7 @@ const DateTimePicker = (
     <CalendarContext.Provider
       value={{
         ...state,
+        highlightedDays,
         locale,
         mode,
         displayFullDays,
