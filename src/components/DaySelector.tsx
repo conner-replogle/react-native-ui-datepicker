@@ -61,7 +61,6 @@ const DaySelector = () => {
           const isToday = areDatesOnSameDay(day.date, today);
           let inRange = false;
           let isSelected = false;
-          console.log(highlightedDays);
           const isHighlighted = highlightedDays
             ? highlightedDays.findIndex((d) =>
                 areDatesOnSameDay(d, day.date)
