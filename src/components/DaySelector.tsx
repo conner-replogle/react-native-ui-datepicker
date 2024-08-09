@@ -12,6 +12,7 @@ import {
   isDateBetween,
   getDate,
   getFormated,
+  dateToUnix,
 } from '../utils';
 
 const DaySelector = () => {
@@ -61,11 +62,19 @@ const DaySelector = () => {
           const isToday = areDatesOnSameDay(day.date, today);
           let inRange = false;
           let isSelected = false;
-          const isHighlighted = highlightedDays
-            ? highlightedDays.findIndex((d) =>
-                areDatesOnSameDay(d, day.date)
-              ) !== -1
-            : false;
+          let isHighlighted = false;
+          if (highlightedDays && highlightedDays.length >= 1) {
+            if (
+              dateToUnix(day.date) >= dateToUnix(highlightedDays![0]!) &&
+              dateToUnix(day.date) <=
+                dateToUnix(highlightedDays![highlightedDays.length - 1]!)
+            ) {
+              isHighlighted =
+                highlightedDays.findIndex((d) =>
+                  areDatesOnSameDay(d, day.date)
+                ) >= 0;
+            }
+          }
 
           if (mode === 'range') {
             rightCrop = false;

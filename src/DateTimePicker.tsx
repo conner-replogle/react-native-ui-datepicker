@@ -84,6 +84,10 @@ const DateTimePicker = (
     ...rest
   } = props;
 
+  let sortedHighlightedDays = highlightedDays?.sort((a, b) => {
+    return dateToUnix(a) - dateToUnix(b);
+  });
+
   const initialCalendarView: CalendarViews =
     mode !== 'single' && initialView === 'time' ? 'day' : initialView;
 
@@ -293,7 +297,7 @@ const DateTimePicker = (
     <CalendarContext.Provider
       value={{
         ...state,
-        highlightedDays,
+        highlightedDays: sortedHighlightedDays,
         locale,
         mode,
         displayFullDays,
